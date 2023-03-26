@@ -4,7 +4,7 @@ const router = express.Router();
 const { authCheck, adminCheck } = require("../middlewares/auth");
 const productController = require("../controllers/product");
 
-router.post("/products", productController.getAllProducts);
+router.get("/products", productController.getAllProducts);
 
 router.get("/product/:productId", productController.getProduct);
 
