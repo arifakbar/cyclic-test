@@ -56,26 +56,3 @@ const server = app.listen(port, () =>
   console.log(`Server is running on port ${port}`)
 );
 
-const io = socket(server, {
-  cors: { origin: "http://localhost:3000" },
-});
-
-io.on("connection", (socket) => {
-  console.log("A user connected");
-
-  socket.on("join", (orderId) => {
-    socket.join(orderId);
-    // console.log("orderId: ", orderId);
-  });
-
-  socket.on("orderUpdated", (order) => {
-    // console.log(
-    //   "orderId: " + order.orderId + " OrderStatus: " + order.orderStatus
-    // );
-    socket.to(order.orderId).emit("updated", order.orderStatus);
-  });
-
-  socket.on("disconnect", () => {
-    console.log("A user disconnected");
-  });
-});
