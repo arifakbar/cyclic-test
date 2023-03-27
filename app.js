@@ -26,10 +26,6 @@ app.use(bodyParser.json({ limit: "2mb" }));
 app.use(morgan("dev"));
 app.use(cors());
 
-app.use("/",(req,res,next)=>{
-  res.send("Hi");
-})
-
 //routes middleware
 app.use("/api", authRoutes);
 app.use("/api", categoryRoutes);
