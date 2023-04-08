@@ -55,7 +55,7 @@ exports.updateUsername = async (req, res, next) => {
     const { username } = req.body;
     const user = await User.findOneAndUpdate(
       { email: req.user.email },
-      { name: username }
+      { name: username },{ new: true }
     );
     res.status(201).json({
       data: user,
@@ -74,7 +74,7 @@ exports.updateAddress = async (req, res, next) => {
     const { address } = req.body;
     const user = await User.findOneAndUpdate(
       { email: req.user.email },
-      { address: address }
+      { address: address },{ new: true }
     );
     res.status(201).json({
       data: user,
